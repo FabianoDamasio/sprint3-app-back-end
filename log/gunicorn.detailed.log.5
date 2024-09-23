@@ -1,0 +1,66 @@
+[2024-09-17 19:55:48,014] ERROR log_exception() L1449 Exception on /membros [GET] - call_trace=C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py L1449
+Traceback (most recent call last):
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1519, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_cors\extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1517, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask\app.py", line 1503, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\flask_openapi3\scaffold.py", line 117, in view_func
+    response = func(**func_kwargs)
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\Documents\GitHub\pos-fullstack\Sprint03\app-back\app.py", line 86, in get_membros
+    membros = session.query(Membro).all()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2673, in all
+    return self._iter().all()  # type: ignore
+           ^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\query.py", line 2827, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2362, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2237, in _execute_internal
+    conn = self._connection_for_bind(bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 2106, in _connection_for_bind
+    return trans._connection_for_bind(engine, execution_options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _connection_for_bind
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\orm\session.py", line 1189, in _connection_for_bind
+    conn = bind.connect()
+           ^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 3278, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\engine\base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "C:\Users\fabia\AppData\Local\Programs\Python\Python312\Lib\site-packages\sqlalchemy\pool\impl.py", line 168, in _do_get
+    raise exc.TimeoutError(
+sqlalchemy.exc.TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30.00 (Background on this error at: https://sqlalche.me/e/20/3o7r)
